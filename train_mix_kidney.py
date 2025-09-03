@@ -47,7 +47,10 @@ if __name__ == "__main__":
     torch.cuda.manual_seed(args.seed)
     
     # 创建模型保存路径，在exp下方根据日期设置子文件夹
-    work_dir = f"./exp/{time.strftime('%Y_%m_%d_%H_%M_%S')}"
+    if args.use_rf:
+        work_dir = f"./exp/{time.strftime('%Y_%m_%d_%H_%M_%S')}_img_rf"
+    else:
+        work_dir = f"./exp/{time.strftime('%Y_%m_%d_%H_%M_%S')}_img"
     if not os.path.exists(work_dir):
         os.makedirs(work_dir)
     
